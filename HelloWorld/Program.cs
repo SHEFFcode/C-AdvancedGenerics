@@ -10,18 +10,14 @@ namespace HelloWorld
     {
         static void Main(string[] args)
         {
-            try
-            {
-                string number = "1234";
-                byte b = Convert.ToByte(number);
-                Console.WriteLine(b);
-            }
-            catch (Exception)
-            {
-                Console.WriteLine($"The number could not be converted to a byte.");
-            }
+            var a = 10;
+            var b = 3;
 
-            
+            Console.WriteLine(a + b);
+
+            var c = 10;
+            var d = 5;
+            Console.WriteLine((float)c / (float)d);
         }
     }
 }
