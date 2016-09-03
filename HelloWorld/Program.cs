@@ -7,41 +7,48 @@ using HelloWorld.Math;
 
 namespace HelloWorld
 {
+    public enum ShippingMethod
+    {
+        RegularAirMail = 1,
+        RegisteredAirMail = 2,
+        Express = 3
+    }
+
+
     class Program
     {
         static void Main(string[] args)
         {
-            Person john = new Person();
-            john.FirstName = "John";
-            john.LastName = "Doe";
-            john.Intoduce();
+            //Value type, passed by value.
+            var a = 10;
+            var b = a;
+            b++;
+            Console.WriteLine($"a:{a}, b:{b}");
 
-            Calculator calculator = new Calculator();
-            var result = calculator.Add(1, 2);
-            Console.WriteLine(result);
+            //reference types, passed by reference
+            var array1 = new int[3] {1, 2, 3};
+            var array2 = array1;
+            array2[0] = 0;
+            Console.WriteLine($"array1: {array1[0]}, array2: {array2[0]}");
 
-            //Arrays
-            var numbers = new int[3] {1, 2, 3};
+            //another example of value type vs reference type
+            var number = 1;
+            Increment(number);
+            Console.WriteLine(number);
 
-            Console.WriteLine(numbers[0]);
-            Console.WriteLine(numbers[1]);
-            Console.WriteLine(numbers[2]);
+            var person = new Person() {age = 20};
+            MakeOld(person);
+            Console.WriteLine(person.age);
+        }
 
+        public static void Increment(int number)
+        {
+            number += 10;
+        }
 
-            //Strings
-            var FirstName = "Jeremy";
-            var numbersArray = new int[3] {1, 2, 3};
-            var list = string.Join(",", numbersArray);
-
-            Console.WriteLine(list);
-
-            var line = "Hi There \n folks how is the life going c:\\asdas\\asdsa\\asda";
-            var newLine = @"Hi there
-                            This is a new line 
-                            c:\sadsa\asdas\asdasda";
-
-            Console.WriteLine(line, newLine);
-
+        public static void MakeOld(Person person)
+        {
+            person.age += 10;
         }
     }
 }

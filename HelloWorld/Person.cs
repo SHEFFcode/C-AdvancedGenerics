@@ -6,6 +6,7 @@ namespace HelloWorld
     {
         public string FirstName;
         public string LastName;
+        public int age;
 
         public void Intoduce()
         {
