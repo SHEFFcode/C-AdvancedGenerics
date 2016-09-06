@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 using HelloWorld.Math;
 
 namespace HelloWorld
@@ -11,50 +12,57 @@ namespace HelloWorld
     {
         static void Main(string[] args)
         {
-//            int hour = 10;
-//            if (hour > 0 && hour < 12)
+//            for (var i = 1; i <= 10; i++)
 //            {
-//                Console.WriteLine("It's morning!");
-//            } else if (hour >= 12 && hour < 18)
-//            {
-//                Console.WriteLine("It's afternoon!");
-//            }
-//            else
-//            {
-//                Console.WriteLine("It's evening!");
-//            }
-
-//            var isGoldCustomer = true;
-//            float price;
-
-//            if (isGoldCustomer)
-//            {
-//                price = 19.95f;
-//            }
-//            else
-//            {
-//                price = 29.95f;
+//                if (i%2 == 0)
+//                {
+//                    Console.WriteLine(i);
+//                }
 //            }
 //
-//            var price = (isGoldCustomer) ? 19.95f : 29.95f;
-//            Console.WriteLine(price);
+//            for (var i = 10; i >= 1; i--)
+//            {
+//                if (i%2 == 0)
+//                {
+//                    Console.WriteLine(i);
+//                }
+//            }
 
-            var season = Season.Autumn;
+            //var name = "John Smith";
 
-            switch (season)
+            //foreach (var character in name)
+            //{
+            //    Console.WriteLine(character);
+            //}
+
+//            var numbers = new int[] {1, 2, 3, 4};
+//            foreach (var number in numbers)
+//            {
+//                Console.WriteLine(number);
+//            }
+
+//            var i = 0;
+//            while (i <= 10)
+//            {
+//                if (i % 2 == 0)
+//                {
+//                    Console.WriteLine(i);
+//                }
+//                i++;
+//            }
+
+            while (true)
             {
-                case Season.Autumn:
-                    Console.WriteLine("It's autumn and a beautiful season");
-                    break;
+                Console.Write("Type your name");
+                var input = Console.ReadLine();
 
-                case Season.Summer:
-                    Console.WriteLine("It's a perfect time to go to the beach.");
-                    break;
+                if (!String.IsNullOrWhiteSpace(input))
+                {
+                    Console.WriteLine("@Echo" + input);
+                    continue;
+                }
 
-                default:
-                    Console.WriteLine("I Don't understand that season.");
-                    break;
-
+                break;
             }
         }
     }
