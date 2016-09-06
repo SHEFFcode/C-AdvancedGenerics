@@ -51,19 +51,32 @@ namespace HelloWorld
 //                i++;
 //            }
 
-            while (true)
+//            while (true)
+//            {
+//                Console.Write("Type your name");
+//                var input = Console.ReadLine();
+//
+//                if (!String.IsNullOrWhiteSpace(input))
+//                {
+//                    Console.WriteLine("@Echo" + input);
+//                    continue;
+//                }
+//
+//                break;
+//            }
+
+            var random = new Random();
+            const int passwordLength = 10;
+            var buffer = new char[passwordLength];
+            for (var i = 0; i < passwordLength; i++)
             {
-                Console.Write("Type your name");
-                var input = Console.ReadLine();
-
-                if (!String.IsNullOrWhiteSpace(input))
-                {
-                    Console.WriteLine("@Echo" + input);
-                    continue;
-                }
-
-                break;
+                buffer[i] = (char)('a' + random.Next(0, 26));
+                
             }
+            var password = new string(buffer);
+            Console.WriteLine(password);
+
+            //            Console.WriteLine((int)'a');
         }
     }
 }
