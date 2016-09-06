@@ -24,7 +24,7 @@ namespace HelloWorld
 //                Console.WriteLine("It's evening!");
 //            }
 
-            var isGoldCustomer = true;
+//            var isGoldCustomer = true;
 //            float price;
 
 //            if (isGoldCustomer)
@@ -35,9 +35,27 @@ namespace HelloWorld
 //            {
 //                price = 29.95f;
 //            }
+//
+//            var price = (isGoldCustomer) ? 19.95f : 29.95f;
+//            Console.WriteLine(price);
 
-            var price = (isGoldCustomer) ? 19.95f : 29.95f;
-            Console.WriteLine(price);
+            var season = Season.Autumn;
+
+            switch (season)
+            {
+                case Season.Autumn:
+                    Console.WriteLine("It's autumn and a beautiful season");
+                    break;
+
+                case Season.Summer:
+                    Console.WriteLine("It's a perfect time to go to the beach.");
+                    break;
+
+                default:
+                    Console.WriteLine("I Don't understand that season.");
+                    break;
+
+            }
         }
     }
 }
