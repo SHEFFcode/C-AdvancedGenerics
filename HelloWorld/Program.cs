@@ -12,71 +12,43 @@ namespace HelloWorld
     {
         static void Main(string[] args)
         {
-//            for (var i = 1; i <= 10; i++)
-//            {
-//                if (i%2 == 0)
-//                {
-//                    Console.WriteLine(i);
-//                }
-//            }
-//
-//            for (var i = 10; i >= 1; i--)
-//            {
-//                if (i%2 == 0)
-//                {
-//                    Console.WriteLine(i);
-//                }
-//            }
+            var numbers = new[] {3, 7, 5, 8 ,10, 15};
+            //Length
+            Console.WriteLine(numbers.Length);
 
-            //var name = "John Smith";
+            //IndexOf
+            var index = Array.IndexOf(numbers, 9);
+            Console.WriteLine(index);
 
-            //foreach (var character in name)
-            //{
-            //    Console.WriteLine(character);
-            //}
+            //Clear
+            Array.Clear(numbers, 0, 2);
 
-//            var numbers = new int[] {1, 2, 3, 4};
-//            foreach (var number in numbers)
-//            {
-//                Console.WriteLine(number);
-//            }
-
-//            var i = 0;
-//            while (i <= 10)
-//            {
-//                if (i % 2 == 0)
-//                {
-//                    Console.WriteLine(i);
-//                }
-//                i++;
-//            }
-
-//            while (true)
-//            {
-//                Console.Write("Type your name");
-//                var input = Console.ReadLine();
-//
-//                if (!String.IsNullOrWhiteSpace(input))
-//                {
-//                    Console.WriteLine("@Echo" + input);
-//                    continue;
-//                }
-//
-//                break;
-//            }
-
-            var random = new Random();
-            const int passwordLength = 10;
-            var buffer = new char[passwordLength];
-            for (var i = 0; i < passwordLength; i++)
+            foreach (var number in numbers)
             {
-                buffer[i] = (char)('a' + random.Next(0, 26));
-                
+                Console.WriteLine(number);
             }
-            var password = new string(buffer);
-            Console.WriteLine(password);
 
-            //            Console.WriteLine((int)'a');
-        }
+            //Copy
+            var anotherArray = new int[3];
+            Array.Copy(numbers, anotherArray, 3);
+            foreach (var num in anotherArray)
+            {
+                Console.WriteLine(num);
+            }
+
+            //Sort
+            Array.Sort(numbers);
+            foreach (var number in numbers)
+            {
+                Console.WriteLine(number);
+            }
+
+            //Reverse
+            Array.Reverse(numbers);
+            foreach (var number in numbers)
+            {
+                Console.WriteLine(number);
+            }
+;        }
     }
 }
