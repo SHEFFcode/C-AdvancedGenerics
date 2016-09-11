@@ -12,47 +12,48 @@ namespace HelloWorld
     {
         static void Main(string[] args)
         {
-            //List
-            var numbers = new List<int>() { 1, 2, 3, 4 };
-            numbers.Add(3);
-            numbers.AddRange(new int[3] { 5, 6, 7 });
+            //DateTime object are immutable
+            var dateTime = new DateTime(2015, 1, 1);
+            var now = DateTime.Now;
+            var today = DateTime.Today;
 
-            foreach (var number in numbers)
-            {
-                Console.WriteLine(number);
-            }
+            //but you can modify them by adding days / minnutes /etc
+            var tomorrow = now.AddDays(3);
+            var yesterday = now.AddDays(-3);
 
-            var index = numbers.IndexOf(1);
-            Console.WriteLine(index);
-            var lastIndex = numbers.LastIndexOf(1);
-            Console.WriteLine(index);
+            Console.WriteLine(now.ToLongDateString());
+            Console.WriteLine(now.ToShortDateString());
+            Console.WriteLine(now.ToLongTimeString());
+            Console.WriteLine(now.ToShortTimeString());
 
-            //count
-            Console.WriteLine(numbers.Count);
+            //both date and time
+            Console.WriteLine(now.ToString("yy-MM-dd HH:mm"));
 
-            //remove first instance of a number
-            numbers.Remove(1);
 
-            foreach (var number in numbers)
-            {
-                Console.WriteLine(number);
-            }
+            /*==================== Time Span ===========================*/
+            var timeSpan = new TimeSpan(1, 2, 3);
+            var timeSpan1 = new TimeSpan(1, 0 , 0);
 
-            //remove all instances of the same number
-            for (var i = 0; i < numbers.Count; i++)
-            {
-                if (numbers[i] == 1)
-                {
-                    numbers.Remove(numbers[i]);
-                }
-            }
+            var clearTimeSpan = TimeSpan.FromHours(1);
 
-            //clear - removes all elements from the list
 
-            numbers.Clear();
+            var start = DateTime.Now;
+            var end = start.AddMinutes(5);
+            var duration = end - start;
 
-            Console.WriteLine(numbers.Count);
+            Console.WriteLine(duration);
 
+            //Properties of a timespan
+            Console.WriteLine($"Minutes: {timeSpan.Minutes}");
+            Console.WriteLine($"Total Minutes: {timeSpan.TotalMinutes}");
+
+            //Add / Subtract timespans, returns a new timespan, since the original is immutable.
+            Console.WriteLine($"Add example: {timeSpan.Add(TimeSpan.FromMinutes(5))}");
+            Console.WriteLine($"Subtract example: {timeSpan.Subtract(TimeSpan.FromMinutes(1))}");
+
+            //Converstion to and from strings
+            Console.WriteLine($"Timespan string values is: {timeSpan.ToString()}");
+            Console.WriteLine($"String value to a timespan: {TimeSpan.Parse("01:02:03")}");
         }
     }
 }
