@@ -12,48 +12,35 @@ namespace HelloWorld
     {
         static void Main(string[] args)
         {
-            //DateTime object are immutable
-            var dateTime = new DateTime(2015, 1, 1);
-            var now = DateTime.Now;
-            var today = DateTime.Today;
+            var fullName = "Jeremy Shefer ";
+            Console.WriteLine($"Whitespace Trimmer: {fullName.Trim()}");
+            Console.WriteLine($"Uppercase: {fullName.Trim().ToUpper()}");
 
-            //but you can modify them by adding days / minnutes /etc
-            var tomorrow = now.AddDays(3);
-            var yesterday = now.AddDays(-3);
+            var index = fullName.IndexOf(' ');
+            var firstName = fullName.Substring(0, index);
+            var lastName = fullName.Substring(index + 1);
 
-            Console.WriteLine(now.ToLongDateString());
-            Console.WriteLine(now.ToShortDateString());
-            Console.WriteLine(now.ToLongTimeString());
-            Console.WriteLine(now.ToShortTimeString());
+            Console.WriteLine($"First Name: {firstName}, Last Name: {lastName}");
 
-            //both date and time
-            Console.WriteLine(now.ToString("yy-MM-dd HH:mm"));
+            var nameArr = fullName.Split(' ');
+            Console.WriteLine($"FIrst name: {nameArr[0]}, Last Name: {nameArr[1]}");
+            var newFullName = fullName.Replace("Jeremy", "Yuriy");
+            Console.WriteLine(newFullName);
+
+            if (String.IsNullOrWhiteSpace(""))
+            {
+                Console.WriteLine("SUpplied string is invalid");
+            }
+
+            var age = "25";
+            var numAge = Convert.ToByte(age);
+
+            var price = 10.99f;
+            var priceString = price.ToString("C");
+
+            Console.WriteLine(priceString);
 
 
-            /*==================== Time Span ===========================*/
-            var timeSpan = new TimeSpan(1, 2, 3);
-            var timeSpan1 = new TimeSpan(1, 0 , 0);
-
-            var clearTimeSpan = TimeSpan.FromHours(1);
-
-
-            var start = DateTime.Now;
-            var end = start.AddMinutes(5);
-            var duration = end - start;
-
-            Console.WriteLine(duration);
-
-            //Properties of a timespan
-            Console.WriteLine($"Minutes: {timeSpan.Minutes}");
-            Console.WriteLine($"Total Minutes: {timeSpan.TotalMinutes}");
-
-            //Add / Subtract timespans, returns a new timespan, since the original is immutable.
-            Console.WriteLine($"Add example: {timeSpan.Add(TimeSpan.FromMinutes(5))}");
-            Console.WriteLine($"Subtract example: {timeSpan.Subtract(TimeSpan.FromMinutes(1))}");
-
-            //Converstion to and from strings
-            Console.WriteLine($"Timespan string values is: {timeSpan.ToString()}");
-            Console.WriteLine($"String value to a timespan: {TimeSpan.Parse("01:02:03")}");
         }
     }
 }
