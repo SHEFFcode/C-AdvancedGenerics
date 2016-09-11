@@ -12,43 +12,47 @@ namespace HelloWorld
     {
         static void Main(string[] args)
         {
-            var numbers = new[] {3, 7, 5, 8 ,10, 15};
-            //Length
-            Console.WriteLine(numbers.Length);
+            //List
+            var numbers = new List<int>() { 1, 2, 3, 4 };
+            numbers.Add(3);
+            numbers.AddRange(new int[3] { 5, 6, 7 });
 
-            //IndexOf
-            var index = Array.IndexOf(numbers, 9);
+            foreach (var number in numbers)
+            {
+                Console.WriteLine(number);
+            }
+
+            var index = numbers.IndexOf(1);
+            Console.WriteLine(index);
+            var lastIndex = numbers.LastIndexOf(1);
             Console.WriteLine(index);
 
-            //Clear
-            Array.Clear(numbers, 0, 2);
+            //count
+            Console.WriteLine(numbers.Count);
+
+            //remove first instance of a number
+            numbers.Remove(1);
 
             foreach (var number in numbers)
             {
                 Console.WriteLine(number);
             }
 
-            //Copy
-            var anotherArray = new int[3];
-            Array.Copy(numbers, anotherArray, 3);
-            foreach (var num in anotherArray)
+            //remove all instances of the same number
+            for (var i = 0; i < numbers.Count; i++)
             {
-                Console.WriteLine(num);
+                if (numbers[i] == 1)
+                {
+                    numbers.Remove(numbers[i]);
+                }
             }
 
-            //Sort
-            Array.Sort(numbers);
-            foreach (var number in numbers)
-            {
-                Console.WriteLine(number);
-            }
+            //clear - removes all elements from the list
 
-            //Reverse
-            Array.Reverse(numbers);
-            foreach (var number in numbers)
-            {
-                Console.WriteLine(number);
-            }
-;        }
+            numbers.Clear();
+
+            Console.WriteLine(numbers.Count);
+
+        }
     }
 }
