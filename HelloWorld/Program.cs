@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
@@ -9,28 +10,17 @@ using HelloWorld.Math;
 
 namespace HelloWorld
 {
-    public class Person
+    public class HttpCookie
     {
-        public string Name { get; set; }
-        private DateTime _birthDate;
+        private readonly Dictionary<string, string> _dictionary = new Dictionary<string, string>();
 
-        public void setBirthdate(DateTime birthdate)
+        public DateTime Expire { get; set; }
+
+        public string this[string key]
         {
-            this._birthDate = birthdate;
+            get { return _dictionary[key]; }
+            set { _dictionary[key] = value; }
         }
-
-        public DateTime GetBirthdate()
-        {
-            return _birthDate;
-        }
-
-        public DateTime Birthdate
-        {
-            get { return _birthDate; }
-            set { _birthDate = value; }
-        }
-
-        public DateTime BirthDate { get; set; }
     }
 
 
@@ -38,9 +28,9 @@ namespace HelloWorld
     {
         static void Main(string[] args)
         {
-            var person = new Person();
-            person.setBirthdate(new DateTime(1982, 1, 1));
-            Console.WriteLine(person.GetBirthdate());
+            var cookie = new HttpCookie();
+            cookie["name"] = "jeremy";
+            Console.WriteLine(cookie["name"]);
         }
     }
 }
