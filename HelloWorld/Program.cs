@@ -9,18 +9,38 @@ using HelloWorld.Math;
 
 namespace HelloWorld
 {
+    public class Person
+    {
+        public string Name { get; set; }
+        private DateTime _birthDate;
+
+        public void setBirthdate(DateTime birthdate)
+        {
+            this._birthDate = birthdate;
+        }
+
+        public DateTime GetBirthdate()
+        {
+            return _birthDate;
+        }
+
+        public DateTime Birthdate
+        {
+            get { return _birthDate; }
+            set { _birthDate = value; }
+        }
+
+        public DateTime BirthDate { get; set; }
+    }
+
+
     class Program
     {
         static void Main(string[] args)
         {
-            var customer = new Customer(1);
-            customer.Orders.Add(new Order());
-            customer.Orders.Add(new Order());
-
-            //call promote method, which accidentially re-initialized the orders field.
-            customer.Promote();
-
-            Console.WriteLine(customer.Orders.Count);
+            var person = new Person();
+            person.setBirthdate(new DateTime(1982, 1, 1));
+            Console.WriteLine(person.GetBirthdate());
         }
     }
 }
