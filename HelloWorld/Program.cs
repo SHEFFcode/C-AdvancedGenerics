@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
@@ -10,44 +12,51 @@ using HelloWorld.Math;
 
 namespace HelloWorld
 {
-    public class Customer
+
+    public class Shape
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
+        public int Width { get; set; }
+        public int Height { get; set; }
+        public int X { get; set; }
+        public int Y { get; set; }
 
-        public void Promote()
+        public void Draw()
         {
-            var rating = CalculateRating();
-            if (rating == 0)
-            {
-                Console.WriteLine("You are our best and only customer.");
-            }
-            else
-            {
-                Console.WriteLine("You are a horrible cusotmer.");
-            }
+            
         }
 
-        public int CalculateRating()
-        {
-            return 0;
-        }
     }
 
-
-    public class GoldCustomer : Customer
+    public class Text : Shape
     {
-        public void OfferVoucher()
-        {
+        public int FontSize { get; set; }
+        public string FontName { get; set; }
 
-        }
+
     }
+
     class Program
     {
         static void Main(string[] args)
         {
-            var customer = new Customer();
-            var rating = customer.CalculateRating();
+            var text = new Text();
+            Shape shape = text;
+
+
+            text.Width = 200;
+            shape.Width = 100;
+
+            Console.WriteLine(text.Width);
+            //StreamReader streamReader = new StreamReader(new MemoryStream());
+            var list = new ArrayList();
+            list.Add(1);
+            list.Add("Hello");
+
+
+            //downcasting
+            Shape shapes = new Text();
+            Text text = (Text)shape;
         }
     }
+
 }
