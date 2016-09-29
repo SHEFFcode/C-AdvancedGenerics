@@ -10,54 +10,44 @@ using HelloWorld.Math;
 
 namespace HelloWorld
 {
-    public class Installer
+    public class Customer
     {
-        private readonly Logger _logger;
+        public int Id { get; set; }
+        public string Name { get; set; }
 
-        public Installer(Logger logger)
+        public void Promote()
         {
-            _logger = logger;
+            var rating = CalculateRating();
+            if (rating == 0)
+            {
+                Console.WriteLine("You are our best and only customer.");
+            }
+            else
+            {
+                Console.WriteLine("You are a horrible cusotmer.");
+            }
         }
 
-        public void Install()
+        public int CalculateRating()
         {
-            _logger.Log("we are installing stuff.");
-        }
-    }
-
-    public class Logger
-    {
-        public void Log(string message)
-        {
-            Console.WriteLine(message);
-        }
-    }
-
-    public class DBMigrator
-    {
-        private readonly Logger _logger;
-
-        public DBMigrator(Logger logger)
-        {
-            _logger = logger;
-        }
-
-        public void Migrate()
-        {
-            _logger.Log("we are migrating");
+            return 0;
         }
     }
 
 
+    public class GoldCustomer : Customer
+    {
+        public void OfferVoucher()
+        {
+
+        }
+    }
     class Program
     {
         static void Main(string[] args)
         {
-            var dbMigrator = new DBMigrator(new Logger());
-            dbMigrator.Migrate();
-
-            var installer = new Installer(new Logger());
-            installer.Install();
+            var customer = new Customer();
+            var rating = customer.CalculateRating();
         }
     }
 }
