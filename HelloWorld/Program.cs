@@ -10,40 +10,54 @@ using HelloWorld.Math;
 
 namespace HelloWorld
 {
-    public class PresentationObject
+    public class Installer
     {
-        public int Heigh { get; set; }
-        public int Width { get; set; }
+        private readonly Logger _logger;
 
-        public void Copy()
+        public Installer(Logger logger)
         {
-            Console.WriteLine("Object Copied to clipboard.");
+            _logger = logger;
         }
 
-        public void Duplicate()
+        public void Install()
         {
-            Console.WriteLine("Object has been copied.");
+            _logger.Log("we are installing stuff.");
         }
     }
 
-    public class Text : PresentationObject
+    public class Logger
     {
-        public int Fontsize { get; set; }
-        public string FontName { get; set; }
-
-        public void AddHyperlink(string url)
+        public void Log(string message)
         {
-            Console.WriteLine("Hyperlink Added to " + url);
+            Console.WriteLine(message);
         }
     }
+
+    public class DBMigrator
+    {
+        private readonly Logger _logger;
+
+        public DBMigrator(Logger logger)
+        {
+            _logger = logger;
+        }
+
+        public void Migrate()
+        {
+            _logger.Log("we are migrating");
+        }
+    }
+
 
     class Program
     {
         static void Main(string[] args)
         {
-            var text = new Text();
-            text.Width = 100;
-            text.Copy();
+            var dbMigrator = new DBMigrator(new Logger());
+            dbMigrator.Migrate();
+
+            var installer = new Installer(new Logger());
+            installer.Install();
         }
     }
 }
