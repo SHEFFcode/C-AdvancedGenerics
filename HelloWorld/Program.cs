@@ -9,31 +9,13 @@ using HelloWorld.Math;
 
 namespace HelloWorld
 {
-
-    public class Persons
-    {
-        public string Name;
-
-        public void Introduce(string to)
-        {
-            Console.WriteLine($"Hi, I am {Name}, it is nice to meet you {to}");
-        }
-
-        public static Persons CreatePerson(string str)
-        {
-            var person = new Persons();
-            person.Name = str;
-            return person;
-        }
-    }
-
-
     class Program
     {
         static void Main(string[] args)
         {
-            var person = Persons.CreatePerson("Peter");
-            person.Introduce("mosh");
+            var customer = new Customer(1, "John");
+            Console.WriteLine(customer.Id);
+            Console.WriteLine(customer.Name);
         }
     }
 }
