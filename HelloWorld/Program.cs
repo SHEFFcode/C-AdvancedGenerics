@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
@@ -13,9 +14,42 @@ namespace HelloWorld
     {
         static void Main(string[] args)
         {
-            var customer = new Customer(1, "John");
-            Console.WriteLine(customer.Id);
-            Console.WriteLine(customer.Name);
+            var number = int.Parse("abc");
+            int numner;
+            var result = int.TryParse("abc", out number);
+
+            if (result)
+            {
+                Console.WriteLine(number);
+            }
+            else
+            {
+                Console.WriteLine("conversion failed.");
+            }
+        }
+
+        static void UseParams()
+        {
+            var calculator = new Calculator();
+            var result = calculator.Add(2, 2);
+            Console.WriteLine(result);
+        }
+
+        static void UsePoints()
+        {
+            try
+            {
+                var point = new Point(0, 0);
+                point.Move(new Point(40, 60));
+                Console.WriteLine($"x: {point.X}, y: {point.Y}");
+
+                point.Move(100, 200);
+                Console.WriteLine($"x: {point.X}, y: {point.Y}");
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("An unexpected error occured.");
+            }
         }
     }
 }

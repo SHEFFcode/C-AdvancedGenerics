@@ -20,9 +20,8 @@ namespace HelloWorld
         }
 
         public Customer(int id, string name)
-            :this()
+            :this(id)
         {
-            this.Id = id;
             this.Name = name;
         }
     }
