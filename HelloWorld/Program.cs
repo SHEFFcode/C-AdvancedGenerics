@@ -10,27 +10,40 @@ using HelloWorld.Math;
 
 namespace HelloWorld
 {
-    public class HttpCookie
+    public class PresentationObject
     {
-        private readonly Dictionary<string, string> _dictionary = new Dictionary<string, string>();
+        public int Heigh { get; set; }
+        public int Width { get; set; }
 
-        public DateTime Expire { get; set; }
-
-        public string this[string key]
+        public void Copy()
         {
-            get { return _dictionary[key]; }
-            set { _dictionary[key] = value; }
+            Console.WriteLine("Object Copied to clipboard.");
+        }
+
+        public void Duplicate()
+        {
+            Console.WriteLine("Object has been copied.");
         }
     }
 
+    public class Text : PresentationObject
+    {
+        public int Fontsize { get; set; }
+        public string FontName { get; set; }
+
+        public void AddHyperlink(string url)
+        {
+            Console.WriteLine("Hyperlink Added to " + url);
+        }
+    }
 
     class Program
     {
         static void Main(string[] args)
         {
-            var cookie = new HttpCookie();
-            cookie["name"] = "jeremy";
-            Console.WriteLine(cookie["name"]);
+            var text = new Text();
+            text.Width = 100;
+            text.Copy();
         }
     }
 }
