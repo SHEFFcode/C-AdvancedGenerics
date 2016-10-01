@@ -13,49 +13,57 @@ using HelloWorld.Math;
 namespace HelloWorld
 {
 
-    public class Shape
+    public abstract class Shape
     {
         public int Width { get; set; }
         public int Height { get; set; }
-        public int X { get; set; }
-        public int Y { get; set; }
 
-        public void Draw()
+        public abstract void Draw();
+
+        public void Copy()
         {
-            
+            Console.WriteLine("Copied.");
+        }
+
+        public void Select()
+        {
+            Console.WriteLine("Selected");
         }
 
     }
 
-    public class Text : Shape
+    public class Circle : Shape
     {
-        public int FontSize { get; set; }
-        public string FontName { get; set; }
+        public override void Draw()
+        {
+            Console.WriteLine("Drawing a circle");
+        }
+    }
 
 
+    public class Rectangle : Shape
+    {
+        public override void Draw()
+        {
+            Console.WriteLine("Draw a rectangle.");
+        }
+    }
+
+    public enum ShapeType
+    {
+        Circle,
+        Rectangle
     }
 
     class Program
     {
         static void Main(string[] args)
         {
-            var text = new Text();
-            Shape shape = text;
+            var circle = new Circle();
+            circle.Draw();
 
-
-            text.Width = 200;
-            shape.Width = 100;
-
-            Console.WriteLine(text.Width);
-            //StreamReader streamReader = new StreamReader(new MemoryStream());
-            var list = new ArrayList();
-            list.Add(1);
-            list.Add("Hello");
-
-
-            //downcasting
-            Shape shapes = new Text();
-            Text text = (Text)shape;
+            var rectangle = new Rectangle();
+            rectangle.Draw();
         }
     }
 
