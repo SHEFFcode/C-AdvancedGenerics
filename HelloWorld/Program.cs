@@ -13,57 +13,37 @@ using HelloWorld.Math;
 namespace HelloWorld
 {
 
-    public abstract class Shape
+    public class ShippingCalculator : IShippingCalculator
     {
-        public int Width { get; set; }
-        public int Height { get; set; }
-
-        public abstract void Draw();
-
-        public void Copy()
+        public float CalculateShipping()
         {
-            Console.WriteLine("Copied.");
-        }
-
-        public void Select()
-        {
-            Console.WriteLine("Selected");
-        }
-
-    }
-
-    public class Circle : Shape
-    {
-        public override void Draw()
-        {
-            Console.WriteLine("Drawing a circle");
+            Console.WriteLine("Shipping Calculated.");
+            return 0.00f;
         }
     }
 
-
-    public class Rectangle : Shape
+    public interface IShippingCalculator
     {
-        public override void Draw()
-        {
-            Console.WriteLine("Draw a rectangle.");
-        }
+        float CalculateShipping();
     }
 
-    public enum ShapeType
+
+    public class OrderProcessor
     {
-        Circle,
-        Rectangle
+        private readonly IShippingCalculator _shippingCalculator;
+
+        public OrderProcessor(IShippingCalculator shippingCalculator)
+        {
+            _shippingCalculator = shippingCalculator;
+        }
+
     }
 
     class Program
     {
         static void Main(string[] args)
         {
-            var circle = new Circle();
-            circle.Draw();
-
-            var rectangle = new Rectangle();
-            rectangle.Draw();
+            var orderProcessor = new OrderProcessor(new ShippingCalculator());
         }
     }
 
